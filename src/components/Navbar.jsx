@@ -126,14 +126,14 @@ export default function Navbar() {
       {/* 📱 Mobile Menu with Outside Click Close */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 bg-black/20 backdrop-blur-sm md:hidden">
+          <div className="fixed inset-0 z-30 bg-black/20 md:hidden">
             <motion.div
               ref={menuRef}
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="absolute top-0 left-0 w-full bg-white/30 backdrop-blur-2xl border-b border-white/30 shadow-lg"
+              className="absolute top-0 left-0 w-full bg-white  border-b border-white/30 shadow-lg"
             >
               <ul className="flex flex-col items-center py-6 space-y-4 text-gray-800 font-medium">
                 {navLinks.map((item, index) => (
