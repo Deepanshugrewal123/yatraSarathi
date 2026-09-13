@@ -50,7 +50,7 @@ function App() {
       setActiveItinerary({
         ...fallbackPlan,
         mode: "deterministic",
-        notice: "Displaying verified standard plan.",
+        notice: "Displaying your verified standard plan.",
       });
     } finally {
       setIsGenerating(false);

@@ -461,12 +461,12 @@ async function runFinalAudit() {
         let deleteSuccessful = false;
         if (deleteBtn) {
           deleteBtn.click();
-          await new Promise(r => setTimeout(r, 300));
-          const confirmModal = document.querySelector('div[role="dialog"]');
+          await new Promise(r => setTimeout(r, 400));
+          const confirmModal = document.getElementById('delete-trip-modal-title')?.closest('div[role="dialog"]') || document.querySelector('div[role="dialog"]');
           const confirmBtn = confirmModal ? Array.from(confirmModal.querySelectorAll('button')).find(b => b.innerText.includes('Delete Trip')) : null;
           if (confirmBtn) {
             confirmBtn.click();
-            await new Promise(r => setTimeout(r, 400));
+            await new Promise(r => setTimeout(r, 600));
             deleteSuccessful = !myTripsSection.innerText.includes('Jaipur') && myTripsSection.innerText.includes('No saved trips yet');
           }
         }
@@ -626,7 +626,7 @@ async function runFinalAudit() {
       (() => {
         const resultsEl = document.getElementById('itinerary-results');
         const text = resultsEl ? resultsEl.innerText : '';
-        const isStandard = text.includes('Verified Standard Plan') || text.includes('Displaying verified standard plan');
+        const isStandard = text.includes('Curated Regional Plan') || text.includes('Displaying your verified standard plan') || text.includes('Verified Standard Plan');
         const hasBudgetPricing = text.includes('Estimated Trip Budget Breakdown');
         
         return {

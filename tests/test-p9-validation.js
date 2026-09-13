@@ -110,7 +110,7 @@ await asyncTest("1. AI service attaches notice to both result AND itinerary obje
     );
     assert.strictEqual(
       result.notice,
-      "AI planning is unavailable offline. We've switched to your verified standard planner."
+      "Personalization is unavailable offline. Displaying your verified standard plan."
     );
   } finally {
     navState.onLine = true;

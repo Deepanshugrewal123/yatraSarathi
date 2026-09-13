@@ -26,7 +26,7 @@ export async function generateSmartItinerary(planParams) {
   if (typeof navigator !== "undefined" && navigator.onLine === false) {
     const deterministicPlan = generateItinerary({ ...planParams, variation: 0 });
     const offlineNotice =
-      "AI planning is unavailable offline. We've switched to your verified standard planner.";
+      "Personalization is unavailable offline. Displaying your verified standard plan.";
     return {
       itinerary: { ...deterministicPlan, mode: "deterministic", notice: offlineNotice },
       mode: "deterministic",
@@ -53,7 +53,7 @@ export async function generateSmartItinerary(planParams) {
     if (!response.ok) {
       console.warn(`[aiService] /api/plan returned HTTP ${response.status}. Falling back to standard plan.`);
       const deterministicPlan = generateItinerary({ ...planParams, variation: 0 });
-      const unavailNotice = "AI service is currently unavailable. Displaying verified standard plan.";
+      const unavailNotice = "We couldn't personalize the plan right now. Displaying your verified standard plan.";
       return {
         itinerary: { ...deterministicPlan, mode: "deterministic", notice: unavailNotice },
         mode: "deterministic",
@@ -66,7 +66,7 @@ export async function generateSmartItinerary(planParams) {
     // If server sent fallback signal (missing API key, rate limit, or guardrail intervention)
     if (data.fallback || !data.itinerary) {
       const deterministicPlan = generateItinerary({ ...planParams, variation: 0 });
-      const fallbackReason = data.reason || "Generated using verified destination standard plan.";
+      const fallbackReason = "Displaying your verified standard plan.";
       return {
         itinerary: { ...deterministicPlan, mode: "deterministic", notice: fallbackReason },
         mode: "deterministic",
@@ -91,10 +91,10 @@ export async function generateSmartItinerary(planParams) {
     const deterministicPlan = generateItinerary({ ...planParams, variation: 0 });
     const catchNotice =
       typeof navigator !== "undefined" && navigator.onLine === false
-        ? "AI planning is unavailable offline. We've switched to your verified standard planner."
+        ? "Personalization is unavailable offline. Displaying your verified standard plan."
         : isTimeout
-        ? "AI request timed out. Displaying verified standard plan."
-        : "Displaying verified standard plan.";
+        ? "Personalization took longer than expected. Displaying your verified standard plan."
+        : "Displaying your verified standard plan.";
     return {
       itinerary: { ...deterministicPlan, mode: "deterministic", notice: catchNotice },
       mode: "deterministic",

@@ -152,18 +152,18 @@ export default function ItineraryView({
             {isAI ? (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-                AI-Personalized Plan
+                Personalized Plan
               </span>
             ) : (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200 shadow-xs">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                Verified Standard Plan
+                Curated Regional Plan
               </span>
             )}
             <span className="text-xs text-gray-500 font-medium hidden sm:inline">
               {isAI
-                ? "Grounded strictly on verified destination facts"
-                : "Deterministic day-by-day plan from verified local data"}
+                ? "Tailored to your travel style and verified destination highlights"
+                : "Curated day-by-day plan based on verified local highlights"}
             </span>
           </div>
 
@@ -203,7 +203,7 @@ export default function ItineraryView({
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-gray-200 text-gray-700 text-xs font-semibold shadow-xs hover:bg-gray-50 transition-colors cursor-pointer"
             >
               <RefreshCw className="w-3.5 h-3.5 text-blue-500" />
-              <span>Regenerate Variation</span>
+              <span>Regenerate Plan</span>
             </button>
 
             <button
@@ -371,7 +371,7 @@ export default function ItineraryView({
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4 text-indigo-600" />
               <h3 className="text-xs font-extrabold uppercase tracking-wider text-indigo-950">
-                AI Personalization Insights
+                Personalization Highlights
               </h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs text-indigo-900 leading-relaxed font-medium">
@@ -397,7 +397,7 @@ export default function ItineraryView({
                 Estimated Trip Budget Breakdown
               </h3>
               <p className="text-xs text-gray-500 mt-0.5">
-                Calculated deterministically from baseline local pricing for {travellers}{" "}
+                Estimated from verified local pricing benchmarks for {travellers}{" "}
                 traveler(s) over {duration} days. Indicative estimate only.
               </p>
             </div>
@@ -492,7 +492,7 @@ export default function ItineraryView({
           <div className="flex items-start gap-2 text-xs text-gray-500 bg-gray-50 p-3 rounded-xl border border-gray-100">
             <Info className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              <strong>Estimated Trip Budget Note:</strong> All figures are deterministic estimations derived from standard verified tourism price baselines for {destination.name}. Actual expenses will vary depending on season, accommodation availability, and individual preferences.
+              <strong>Estimated Trip Budget Note:</strong> All figures are estimated from verified local tourism pricing benchmarks for {destination.name}. Actual expenses may vary depending on season, accommodation availability, and individual preferences.
             </p>
           </div>
         </div>
@@ -712,7 +712,7 @@ export default function ItineraryView({
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-300 text-gray-800 text-sm font-bold shadow-sm hover:bg-gray-50 transition-all cursor-pointer"
           >
             <Edit3 className="w-4 h-4 text-orange-500" />
-            <span>Modify Plan Parameters</span>
+            <span>Modify Preferences</span>
           </button>
 
           <button
@@ -721,7 +721,7 @@ export default function ItineraryView({
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-green-600 text-white text-sm font-bold shadow-md hover:scale-105 transition-all cursor-pointer"
           >
             <RefreshCw className="w-4 h-4" />
-            <span>Regenerate Variation</span>
+            <span>Regenerate Plan</span>
           </button>
 
           <button

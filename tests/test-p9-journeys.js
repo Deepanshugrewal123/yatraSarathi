@@ -380,7 +380,7 @@ await runAsyncJourneyTest("Journey F", "1. Complete full offline flow: browse, p
   assert.strictEqual(aiResult.mode, "deterministic");
   assert.strictEqual(
     aiResult.notice,
-    "AI planning is unavailable offline. We've switched to your verified standard planner."
+    "Personalization is unavailable offline. Displaying your verified standard plan."
   );
   assert.strictEqual(aiResult.itinerary.notice, aiResult.notice);
 

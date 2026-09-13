@@ -367,7 +367,7 @@ await runAsyncTest("16. AI service immediately falls back when navigator.onLine 
     assert.strictEqual(result.mode, "deterministic", "Must return deterministic plan");
     assert.strictEqual(
       result.notice,
-      "AI planning is unavailable offline. We've switched to your verified standard planner.",
+      "Personalization is unavailable offline. Displaying your verified standard plan.",
       "Notice must match specification"
     );
     assert.strictEqual(result.itinerary.days.length, 2, "Must contain full itinerary");

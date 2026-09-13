@@ -28,7 +28,7 @@ export default function Footer() {
               </span>
             </h2>
             <p className="text-base leading-relaxed mb-6 text-gray-400">
-              Your AI-powered travel buddy. Plan smart, travel better, and
+              Your thoughtful travel companion. Plan smart, travel better, and
               explore sustainably with YatraSarathi.
             </p>
 

@@ -446,7 +446,7 @@ export default function PlannerForm({
         className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-green-600 py-3.5 px-6 font-bold text-gray-900 shadow-lg hover:shadow-xl transition-all cursor-pointer disabled:opacity-75 disabled:cursor-wait text-sm"
       >
         <Sparkles className={`w-4 h-4 text-orange-950 ${isGenerating ? "animate-spin" : ""}`} />
-        <span>{isGenerating ? "Personalizing your itinerary with AI..." : "Generate Smart Itinerary"}</span>
+        <span>{isGenerating ? "Building your personalized itinerary..." : "Generate Itinerary"}</span>
       </motion.button>
     </form>
   );

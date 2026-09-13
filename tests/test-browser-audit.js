@@ -515,7 +515,7 @@ async function runAudit() {
         const resultsEl = document.getElementById('itinerary-results');
         if (!resultsEl) return { found: false };
         
-        const isStandard = resultsEl.innerText.includes('Verified Standard Plan') || resultsEl.innerText.includes('Displaying verified standard plan');
+        const isStandard = resultsEl.innerText.includes('Curated Regional Plan') || resultsEl.innerText.includes('Displaying your verified standard plan') || resultsEl.innerText.includes('Verified Standard Plan');
         
         return {
           found: true,

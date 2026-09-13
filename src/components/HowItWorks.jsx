@@ -10,8 +10,8 @@ export default function HowItWorks() {
     },
     {
       icon: <Calendar className="w-10 h-10 text-orange-500" />,
-      title: "AI Creates Itinerary",
-      desc: "Our AI instantly generates a day-by-day personalized plan.",
+      title: "Curated Itinerary",
+      desc: "Receive a balanced day-by-day schedule tailored to your pace and preferences.",
     },
     {
       icon: <Map className="w-10 h-10 text-orange-500" />,

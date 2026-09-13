@@ -290,12 +290,12 @@ export default function MyTrips({
                       {isAI ? (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-600/90 backdrop-blur-md text-white text-xs font-bold shadow-xs">
                           <Sparkles className="w-3.5 h-3.5 text-purple-200" />
-                          AI-Personalized
+                          Personalized
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-700/90 backdrop-blur-md text-white text-xs font-bold shadow-xs">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-200" />
-                          Verified Standard
+                          Curated Plan
                         </span>
                       )}
                     </div>
