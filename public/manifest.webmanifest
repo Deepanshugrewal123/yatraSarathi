@@ -1,0 +1,20 @@
+{
+  "name": "YatraSarathi — AI-Powered Tourist Assistance & Travel Planning",
+  "short_name": "YatraSarathi",
+  "description": "Personalized, budget-friendly, and eco-conscious travel planning in India. Discover popular destinations and hidden gems with YatraSarathi.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "categories": ["travel", "tourism", "lifestyle"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

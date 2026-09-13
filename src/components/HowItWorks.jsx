@@ -1,4 +1,3 @@
-import React from "react";
 import { Search, Calendar, Map, CheckCircle } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -33,12 +32,12 @@ export default function HowItWorks() {
     >
       {/* Floating Background Blobs */}
       <motion.div
-        className="absolute top-10 right-10 h-80 w-80 rounded-full bg-orange-300 opacity-25 blur-3xl"
+        className="absolute top-10 right-10 h-80 w-80 rounded-full bg-orange-300 opacity-25 blur-3xl pointer-events-none"
         animate={{ y: [0, -20, 0], x: [0, 20, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-10 left-10 h-80 w-80 rounded-full bg-green-300 opacity-25 blur-3xl"
+        className="absolute bottom-10 left-10 h-80 w-80 rounded-full bg-green-300 opacity-25 blur-3xl pointer-events-none"
         animate={{ y: [0, 20, 0], x: [0, -20, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />

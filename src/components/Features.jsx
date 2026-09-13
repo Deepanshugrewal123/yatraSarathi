@@ -1,6 +1,5 @@
-import React from "react";
 import { MapPin, IndianRupee, Leaf, Users } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export default function Features() {
   const features = [
@@ -52,12 +51,12 @@ export default function Features() {
     >
       {/* Floating Background Blobs */}
       <motion.div
-        className="absolute top-0 right-0 h-96 w-96 rounded-full bg-orange-300 opacity-25 blur-3xl"
+        className="absolute top-0 right-0 h-96 w-96 rounded-full bg-orange-300 opacity-25 blur-3xl pointer-events-none"
         animate={{ y: [0, -25, 0], x: [0, 25, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-green-300 opacity-25 blur-3xl"
+        className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-green-300 opacity-25 blur-3xl pointer-events-none"
         animate={{ y: [0, 20, 0], x: [0, -20, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />

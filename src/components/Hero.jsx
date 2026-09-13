@@ -1,16 +1,8 @@
-import React, { useState } from "react";
-import { MapPin, IndianRupee, Users, Plane } from "lucide-react";
-import { motion } from "framer-motion";
+import { Plane, Sparkles } from "lucide-react";
+import { motion } from "motion/react";
+import PlannerForm from "./PlannerForm";
 
-export default function Hero() {
-  const [days, setDays] = useState(7);
-  const [people, setPeople] = useState("");
-
-  const handlePeopleChange = (e) => {
-    const value = e.target.value;
-    setPeople(value === "" ? "" : Number(value));
-  };
-
+export default function Hero({ onGenerate, prefill, isGenerating }) {
   const fadeInUp = (delay = 0) => ({
     hidden: { opacity: 0, y: 40 },
     visible: {
@@ -27,21 +19,21 @@ export default function Hero() {
     >
       {/* Animated Blobs */}
       <motion.div
-        className="absolute top-10 left-10 h-72 w-72 bg-orange-300/40 rounded-full blur-3xl"
+        className="absolute top-10 left-10 h-72 w-72 bg-orange-300/40 rounded-full blur-3xl pointer-events-none"
         animate={{ y: [0, -15, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 h-96 w-96 bg-green-300/40 rounded-full blur-3xl"
+        className="absolute bottom-0 right-0 h-96 w-96 bg-green-300/40 rounded-full blur-3xl pointer-events-none"
         animate={{ y: [0, 20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container relative z-10 mx-auto flex flex-col md:flex-row items-center md:justify-between px-6 md:px-12">
+      <div className="container relative z-10 mx-auto flex flex-col lg:flex-row items-center lg:justify-between gap-10 px-6 md:px-12">
         {/* LEFT: IMAGE COLLAGE SECTION */}
         <motion.div
-          className="relative flex-1 flex justify-center md:justify-start mb-10 md:mb-0 w-full"
-          initial={{ x: -100, opacity: 0 }}
+          className="relative flex-1 flex justify-center lg:justify-start w-full"
+          initial={{ x: -60, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 70, damping: 12, delay: 0.2 }}
         >
@@ -49,32 +41,35 @@ export default function Hero() {
             {/* Main Image */}
             <motion.img
               src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1200&auto=format&fit=crop"
-              alt="Taj Mahal"
+              alt="Taj Mahal, Agra"
+              loading="eager"
               className="w-[90%] h-[90%] object-cover rounded-3xl shadow-2xl border border-white/50"
-              animate={{ scale: [1, 1.05, 1] }}
+              animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
 
             {/* Floating small cards (only on md and up) */}
             <motion.img
               src="https://madhutourism.com/wp-content/uploads/2022/01/kashi.jpg"
-              alt="Goa Beach"
-              className="hidden md:block absolute bottom-10 left-0 w-40 h-28 rounded-xl object-cover shadow-lg border border-white/50"
+              alt="Varanasi Ghats"
+              loading="lazy"
+              className="hidden md:block absolute bottom-6 left-0 w-40 h-28 rounded-xl object-cover shadow-lg border border-white/50"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
 
             <motion.img
               src="https://i.ytimg.com/vi/KpkiH7JLkLg/maxresdefault.jpg"
-              alt="Himalayas"
-              className="hidden md:block absolute top-10 right-0 w-44 h-32 rounded-xl object-cover shadow-lg border border-white/50"
+              alt="Himalayan Mountain Peaks"
+              loading="lazy"
+              className="hidden md:block absolute top-6 right-0 w-44 h-32 rounded-xl object-cover shadow-lg border border-white/50"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
 
             {/* Floating Plane Animation */}
             <motion.div
-              className="absolute top-[-30px] right-[-40px] hidden md:block"
+              className="absolute top-[-30px] right-[-40px] hidden md:block pointer-events-none"
               animate={{ x: [0, 25, 0], y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -83,15 +78,15 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* RIGHT: TEXT + FORM SECTION */}
+        {/* RIGHT: TEXT + SMART PLANNER FORM SECTION */}
         <motion.div
-          className="flex-1 text-center md:text-left md:max-w-xl"
+          className="flex-1 text-center lg:text-left w-full lg:max-w-xl"
           variants={fadeInUp(0.3)}
           initial="hidden"
           animate="visible"
         >
           <motion.h1
-            className="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900"
             variants={fadeInUp(0.3)}
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-green-500 to-emerald-600">
@@ -101,84 +96,38 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="mt-6 text-lg text-gray-700 md:text-xl leading-relaxed"
-            variants={fadeInUp(0.5)}
+            className="mt-4 text-base md:text-lg text-gray-700 leading-relaxed"
+            variants={fadeInUp(0.4)}
           >
             Personalized, budget-friendly, and eco-conscious trip planning in
-            one trusted app. Empowering governments with tourism insights and
-            supporting local communities.
+            one trusted app. Empowering travellers with transparent itineraries
+            and supporting local communities.
           </motion.p>
 
-          {/* FORM CARD */}
+          {/* SMART PLANNER FORM CARD */}
           <motion.div
-            className="mt-10 w-full rounded-2xl bg-white/40 border border-white/50 p-6 shadow-2xl backdrop-blur-md md:max-w-md"
-            variants={fadeInUp(0.7)}
+            id="planner"
+            className="mt-8 w-full rounded-3xl bg-white/80 border border-white/70 p-5 sm:p-7 shadow-2xl backdrop-blur-xl"
+            variants={fadeInUp(0.5)}
           >
-            <div className="space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <motion.div className="relative" variants={fadeInUp(0.8)}>
-                  <MapPin className="absolute left-3 top-3.5 h-5 w-5 text-gray-600" />
-                  <input
-                    type="text"
-                    placeholder="Destination"
-                    aria-label="Destination"
-                    className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-3 text-gray-800 placeholder:text-gray-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 focus:outline-none"
-                  />
-                </motion.div>
-
-                <motion.div className="relative" variants={fadeInUp(0.9)}>
-                  <IndianRupee className="absolute left-3 top-3.5 h-5 w-5 text-gray-600" />
-                  <input
-                    type="text"
-                    placeholder="Budget (₹)"
-                    aria-label="Budget"
-                    className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-3 text-gray-800 placeholder:text-gray-500 focus:border-green-400 focus:ring-2 focus:ring-green-300 focus:outline-none"
-                  />
-                </motion.div>
-              </div>
-
-              <motion.div variants={fadeInUp(1)}>
-                <label className="text-sm font-semibold text-gray-700 flex justify-between">
-                  <span>Trip Duration (days)</span>
-                  <span className="font-bold text-orange-600">{days} days</span>
-                </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="30"
-                  value={days}
-                  onChange={(e) => setDays(e.target.value)}
-                  className="w-full cursor-pointer appearance-none rounded-lg bg-gray-200 h-2 accent-orange-500 focus:outline-none"
-                />
-                <div className="flex justify-between text-xs text-gray-500 mt-2">
-                  <span>1</span>
-                  <span>15</span>
-                  <span>30</span>
-                </div>
-              </motion.div>
-
-              <motion.div className="relative" variants={fadeInUp(1.1)}>
-                <Users className="absolute left-3 top-3.5 h-5 w-5 text-gray-600" />
-                <input
-                  type="number"
-                  min="1"
-                  value={people}
-                  onChange={handlePeopleChange}
-                  placeholder="Number of People"
-                  aria-label="Number of People"
-                  className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-3 text-gray-800 placeholder:text-gray-500 focus:border-orange-400 focus:ring-2 focus:ring-orange-300 focus:outline-none"
-                />
-              </motion.div>
-
-              <motion.button
-                className="w-full rounded-lg bg-gradient-to-r from-orange-500 via-white to-green-500 px-6 py-3 font-semibold text-gray-900 shadow-lg"
-                variants={fadeInUp(1.2)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Start Planning
-              </motion.button>
+            <div className="mb-4 text-left">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100 text-orange-800 text-xs font-bold border border-orange-200">
+                <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+                Smart Trip Planner
+              </span>
+              <h2 className="text-lg sm:text-xl font-black text-gray-900 mt-2">
+                Plan Your Journey in Seconds
+              </h2>
+              <p className="text-xs text-gray-600 mt-0.5">
+                Select your destination & preferences for a personalized, transparent day-by-day itinerary.
+              </p>
             </div>
+
+            <PlannerForm
+              onGenerate={onGenerate}
+              prefill={prefill}
+              isGenerating={isGenerating}
+            />
           </motion.div>
         </motion.div>
       </div>

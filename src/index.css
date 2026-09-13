@@ -1,4 +1,48 @@
 @import "tailwindcss";
+
 html {
   scroll-behavior: smooth;
+}
+
+/* Reduced Motion: Respect system accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  nav,
+  footer,
+  #home,
+  #destination,
+  #hiddengems,
+  #mytrips,
+  #favorites,
+  #features,
+  #howitworks,
+  #impact,
+  aside[role="status"] {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #111827 !important;
+  }
+
+  #itinerary-results {
+    border: none !important;
+    background: white !important;
+    padding: 0 !important;
+  }
 }
