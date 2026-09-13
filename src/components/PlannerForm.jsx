@@ -136,13 +136,13 @@ export default function PlannerForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-5 text-left"
+      className="space-y-6 sm:space-y-7 text-left"
       noValidate
       aria-label="Smart Trip Planner Form"
     >
       {/* Top Header with Reset Option */}
       {isFormDirty && (
-        <div className="flex justify-end -mt-1 -mb-3">
+        <div className="flex justify-end -mt-1 -mb-2">
           <button
             type="button"
             onClick={handleReset}
@@ -158,14 +158,14 @@ export default function PlannerForm({
       <div>
         <label
           htmlFor="planner-destination"
-          className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5 flex items-center justify-between"
+          className="text-xs font-bold uppercase tracking-wider text-gray-700 mb-2.5 flex items-center justify-between"
         >
           <span className="flex items-center gap-1.5">
             <MapPin className="w-3.5 h-3.5 text-orange-500" />
             Destination <span className="text-red-500">*</span>
           </span>
           {selectedDestination && (
-            <span className="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+            <span className="text-xs font-medium text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
               {selectedDestination.state}
             </span>
           )}
@@ -215,7 +215,7 @@ export default function PlannerForm({
             id="planner-destination-error"
             role="alert"
             aria-live="polite"
-            className="mt-1.5 text-xs text-red-600 flex items-center gap-1 font-medium"
+            className="mt-2 text-xs text-red-600 flex items-center gap-1 font-medium"
           >
             <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" /> {errors.destination}
           </p>
@@ -223,10 +223,10 @@ export default function PlannerForm({
       </div>
 
       {/* 2. Duration & Travellers (Side-by-side) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
         {/* Duration Slider */}
-        <div className="p-3 rounded-2xl bg-white/70 border border-gray-100 shadow-sm">
-          <div className="flex justify-between items-center mb-1.5">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-gray-100 shadow-xs">
+          <div className="flex justify-between items-center mb-2.5">
             <label
               htmlFor="planner-duration"
               className="text-xs font-bold uppercase tracking-wider text-gray-700 flex items-center gap-1.5"
@@ -234,25 +234,27 @@ export default function PlannerForm({
               <Calendar className="w-3.5 h-3.5 text-orange-500" />
               Duration
             </label>
-            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-800 border border-orange-200">
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-800 border border-orange-200">
               {days} {days === 1 ? "Day" : "Days"}
             </span>
           </div>
-          <input
-            id="planner-duration"
-            type="range"
-            min="1"
-            max="14"
-            value={days}
-            aria-valuemin={1}
-            aria-valuemax={14}
-            aria-valuenow={days}
-            aria-valuetext={`${days} ${days === 1 ? "day" : "days"}`}
-            aria-label="Trip duration in days"
-            onChange={(e) => setDays(Number(e.target.value))}
-            className="w-full cursor-pointer appearance-none rounded-lg bg-gray-200 h-2 accent-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-200"
-          />
-          <div className="flex justify-between text-[10px] text-gray-500 mt-1 font-medium">
+          <div className="py-1">
+            <input
+              id="planner-duration"
+              type="range"
+              min="1"
+              max="14"
+              value={days}
+              aria-valuemin={1}
+              aria-valuemax={14}
+              aria-valuenow={days}
+              aria-valuetext={`${days} ${days === 1 ? "day" : "days"}`}
+              aria-label="Trip duration in days"
+              onChange={(e) => setDays(Number(e.target.value))}
+              className="w-full cursor-pointer appearance-none rounded-lg bg-gray-200 h-2 accent-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-200"
+            />
+          </div>
+          <div className="flex justify-between text-[10px] text-gray-500 mt-1.5 font-medium">
             <span>1 day</span>
             <span>7 days</span>
             <span>14 days</span>
@@ -260,8 +262,8 @@ export default function PlannerForm({
         </div>
 
         {/* Travellers Stepper */}
-        <div className="p-3 rounded-2xl bg-white/70 border border-gray-100 shadow-sm flex flex-col justify-between">
-          <div className="flex justify-between items-center mb-1">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 border border-gray-100 shadow-xs flex flex-col justify-between">
+          <div className="flex justify-between items-center mb-2.5">
             <label
               htmlFor="planner-travellers"
               className="text-xs font-bold uppercase tracking-wider text-gray-700 flex items-center gap-1.5"
@@ -269,11 +271,11 @@ export default function PlannerForm({
               <Users className="w-3.5 h-3.5 text-emerald-600" />
               Travellers
             </label>
-            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
               {travellers} {travellers === 1 ? "Person" : "People"}
             </span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={() => handleTravellerChange(-1)}
@@ -297,7 +299,7 @@ export default function PlannerForm({
                 );
                 setTravellers(val);
               }}
-              className="w-full text-center py-1 rounded-lg border border-gray-200 bg-white font-bold text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-200"
+              className="w-full text-center py-1.5 rounded-lg border border-gray-200 bg-white font-bold text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-200"
             />
             <button
               type="button"
@@ -314,11 +316,11 @@ export default function PlannerForm({
 
       {/* 3. Budget Tier */}
       <fieldset className="border-0 p-0 m-0">
-        <legend className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5 flex items-center gap-1.5">
+        <legend className="text-xs font-bold uppercase tracking-wider text-gray-700 mb-2.5 flex items-center gap-1.5">
           <IndianRupee className="w-3.5 h-3.5 text-blue-600" />
           Budget Tier
         </legend>
-        <div className="grid grid-cols-3 gap-2" role="radiogroup" aria-label="Budget Tier">
+        <div className="grid grid-cols-3 gap-2 sm:gap-2.5" role="radiogroup" aria-label="Budget Tier">
           {PLANNER_BUDGET_TIERS.map((tier) => {
             const isSelected = budgetTier === tier.id;
             return (
@@ -328,14 +330,14 @@ export default function PlannerForm({
                 role="radio"
                 aria-checked={isSelected}
                 onClick={() => setBudgetTier(tier.id)}
-                className={`p-2 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center ${
+                className={`py-2.5 px-2 sm:py-3 sm:px-3 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center ${
                   isSelected
                     ? "border-blue-500 bg-blue-50 text-blue-900 shadow-sm ring-2 ring-blue-300"
                     : "border-gray-200 bg-white/80 hover:bg-gray-50 text-gray-700"
                 }`}
               >
                 <span className="text-xs font-bold capitalize">{tier.label}</span>
-                <span className="text-[10px] text-gray-500 leading-tight mt-0.5 line-clamp-1">
+                <span className="text-[10px] text-gray-500 leading-tight mt-0.5 sm:mt-1 line-clamp-1 font-medium">
                   {tier.id === "budget"
                     ? "Economy"
                     : tier.id === "moderate"
@@ -350,11 +352,11 @@ export default function PlannerForm({
 
       {/* 4. Travel Style */}
       <fieldset className="border-0 p-0 m-0">
-        <legend className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5 flex items-center gap-1.5">
+        <legend className="text-xs font-bold uppercase tracking-wider text-gray-700 mb-2.5 flex items-center gap-1.5">
           <Compass className="w-3.5 h-3.5 text-indigo-600" />
           Travel Style
         </legend>
-        <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Travel Style">
+        <div className="flex flex-wrap gap-2 sm:gap-2.5" role="radiogroup" aria-label="Travel Style">
           {TRAVEL_STYLES.map((style) => {
             const isSelected = travelStyle === style;
             return (
@@ -364,7 +366,7 @@ export default function PlannerForm({
                 role="radio"
                 aria-checked={isSelected}
                 onClick={() => setTravelStyle(style)}
-                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   isSelected
                     ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm"
                     : "bg-white/80 hover:bg-gray-100 text-gray-700 border border-gray-200"
@@ -379,16 +381,18 @@ export default function PlannerForm({
 
       {/* 5. Interests Multi-Select */}
       <fieldset className="border-0 p-0 m-0">
-        <legend className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5 w-full">
+        <legend className="text-xs font-bold uppercase tracking-wider text-gray-700 mb-2.5 w-full">
           <span className="flex items-center justify-between">
             <span className="flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               Interests & Activities
             </span>
-            <span className="text-[10px] text-gray-500 font-normal">(Optional)</span>
+            <span className="text-[10px] font-normal text-gray-400 tracking-normal normal-case bg-gray-100/80 px-2 py-0.5 rounded-full border border-gray-200/40">
+              Optional
+            </span>
           </span>
         </legend>
-        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Interests and Activities">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5" role="group" aria-label="Interests and Activities">
           {INTEREST_OPTIONS.map((interest) => {
             const isSelected = selectedInterests.includes(interest);
             return (
@@ -398,13 +402,13 @@ export default function PlannerForm({
                 role="checkbox"
                 aria-checked={isSelected}
                 onClick={() => toggleInterest(interest)}
-                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-medium transition-all cursor-pointer ${
                   isSelected
                     ? "bg-emerald-600 text-white shadow-xs"
-                    : "bg-white/70 hover:bg-gray-100 text-gray-600 border border-gray-200"
+                    : "bg-white/80 hover:bg-gray-100 text-gray-600 border border-gray-200"
                 }`}
               >
-                {isSelected && <Check className="w-3 h-3" />}
+                {isSelected && <Check className="w-3 h-3 flex-shrink-0" />}
                 <span>{interest}</span>
               </button>
             );
@@ -417,13 +421,13 @@ export default function PlannerForm({
         <motion.div
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-3 rounded-xl bg-gradient-to-r from-orange-50 via-amber-50 to-green-50 border border-amber-200/60 flex items-center justify-between text-xs"
+          className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-orange-50 via-amber-50 to-green-50 border border-amber-200/60 flex items-center justify-between text-xs shadow-xs"
         >
           <div>
             <span className="text-gray-500 block text-[10px] uppercase font-bold tracking-wider">
               Estimated Trip Budget ({travellers} pax • {days}d)
             </span>
-            <span className="text-base font-extrabold text-gray-900">
+            <span className="text-base sm:text-lg font-extrabold text-gray-900">
               ₹{formatINR(liveBudget.total)}
             </span>
           </div>
@@ -431,23 +435,26 @@ export default function PlannerForm({
             <span className="text-gray-500 block text-[10px] uppercase font-bold tracking-wider">
               Per Person
             </span>
-            <span className="text-xs font-bold text-emerald-700">
+            <span className="text-xs sm:text-sm font-bold text-emerald-700">
               ₹{formatINR(liveBudget.perPerson)}
             </span>
           </div>
         </motion.div>
       )}
 
-      <motion.button
-        type="submit"
-        disabled={isGenerating}
-        whileHover={{ scale: isGenerating ? 1 : 1.01 }}
-        whileTap={{ scale: isGenerating ? 1 : 0.98 }}
-        className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-green-600 py-3.5 px-6 font-bold text-gray-900 shadow-lg hover:shadow-xl transition-all cursor-pointer disabled:opacity-75 disabled:cursor-wait text-sm"
-      >
-        <Sparkles className={`w-4 h-4 text-orange-950 ${isGenerating ? "animate-spin" : ""}`} />
-        <span>{isGenerating ? "Building your personalized itinerary..." : "Generate Itinerary"}</span>
-      </motion.button>
+      {/* 7. Generate Action */}
+      <div className="pt-1 sm:pt-1.5">
+        <motion.button
+          type="submit"
+          disabled={isGenerating}
+          whileHover={{ scale: isGenerating ? 1 : 1.01 }}
+          whileTap={{ scale: isGenerating ? 1 : 0.98 }}
+          className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-green-600 py-3.5 px-6 font-bold text-gray-900 shadow-lg hover:shadow-xl transition-all cursor-pointer disabled:opacity-75 disabled:cursor-wait text-sm"
+        >
+          <Sparkles className={`w-4 h-4 text-orange-950 ${isGenerating ? "animate-spin" : ""}`} />
+          <span>{isGenerating ? "Building your personalized itinerary..." : "Generate Itinerary"}</span>
+        </motion.button>
+      </div>
     </form>
   );
 }
