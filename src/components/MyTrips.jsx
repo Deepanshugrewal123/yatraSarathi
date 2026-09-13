@@ -222,6 +222,7 @@ export default function MyTrips({
               type="file"
               accept=".json,application/json"
               onChange={handleFileSelect}
+              aria-label="Upload trip plan JSON file"
               className="hidden"
             />
           </motion.div>

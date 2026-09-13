@@ -289,6 +289,7 @@ export default function PlannerForm({
               min="1"
               max="10"
               value={travellers}
+              aria-label="Number of travellers"
               onChange={(e) => {
                 const val = Math.min(
                   10,

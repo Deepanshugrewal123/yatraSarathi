@@ -29,15 +29,37 @@ Built with **React**, **Tailwind CSS**, and **Framer Motion**, it offers elegant
 
 | Technology | Purpose |
 |-------------|----------|
-| ⚛️ **React.js** | Frontend framework |
-| 🎨 **Tailwind CSS** | Styling and utility classes |
-| 💫 **Framer Motion** | Animations and transitions |
-| 🧰 **Lucide React** | Icons and illustrations |
-| 🌐 **Vite / Create React App** | Project bundler (choose one as per setup) |
-
+| ⚛️ **React 19** | Frontend framework |
+| 🎨 **Tailwind CSS v4** | Styling and design system |
+| 🗺️ **Leaflet** | Spatial route visualization |
+| 💫 **Motion** | Animations and accessible transitions |
+| 🧰 **Lucide React** | Icons and visual indicators |
+| 🌐 **Vite 7** | Frontend bundler and dev server |
+| 🤖 **Google Gemini (Server-Side)** | AI Travel Intelligence layer |
 
 ---
 
-##  🔗Link
+## 🛠️ Getting Started
 
-https://yatra-sarathi-pxo3.vercel.app/
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Local Development
+```bash
+npm run dev
+```
+
+### 3. Production Build & Local Preview
+```bash
+npm run build
+npm run preview
+```
+
+### 4. Standalone Production Server
+```bash
+npm run build
+npm start
+```
+*Runs a zero-dependency production Node.js server serving the application shell and `/api/plan` on `http://localhost:3000`.*

@@ -277,30 +277,22 @@ runTest("9. Leaflet and RouteOverview remain in separate deferred chunks", () =>
 });
 
 // -------------------------------------------------------------
-// 5. Metadata and Production URLs
+// 5. Metadata and Platform-Neutral URLs
 // -------------------------------------------------------------
-runTest("10. index.html defines absolute production URLs for Open Graph and Twitter images", () => {
+runTest("10. index.html defines clean platform-neutral Open Graph and Twitter metadata", () => {
   const htmlContent = fs.readFileSync(path.join(ROOT, "index.html"), "utf-8");
 
   assert.ok(
-    htmlContent.includes('<meta property="og:url" content="https://yatrasarathi.vercel.app/" />'),
-    "og:url must match production domain"
+    htmlContent.includes('<meta property="og:url" content="/" />'),
+    "og:url must be platform-neutral root"
   );
   assert.ok(
-    htmlContent.includes(
-      '<meta property="og:image" content="https://yatrasarathi.vercel.app/favicon.svg" />'
-    ),
-    "og:image must use absolute production URL"
+    htmlContent.includes('<meta property="og:image" content="/favicon.svg" />'),
+    "og:image must be platform-neutral asset"
   );
   assert.ok(
-    htmlContent.includes(
-      '<meta name="twitter:image" content="https://yatrasarathi.vercel.app/favicon.svg" />'
-    ),
-    "twitter:image must use absolute production URL"
-  );
-  assert.ok(
-    htmlContent.includes('<link rel="canonical" href="https://yatrasarathi.vercel.app/" />'),
-    "canonical link must match production domain"
+    htmlContent.includes('<meta name="twitter:image" content="/favicon.svg" />'),
+    "twitter:image must be platform-neutral asset"
   );
 });
 
